@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17172f">
+  <title>달잠 — 나의 수면 친구 찾기</title>
+  <style>
+@charset "UTF-8";
+:root{color-scheme:dark;--bg:#141426;--panel:#202037;--text:#f4f0ff;--muted:#b0aac8;--accent:#c6b3fa;--line:#37334c}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 25%,#2c2547 0,transparent 58%),var(--bg);color:var(--text);font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;line-height:1.7}button,a,textarea{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #f4d79c;outline-offset:5px}button:disabled{opacity:.3;cursor:default}[hidden]{display:none!important}.header{max-width:1120px;margin:auto;padding:25px 32px;display:flex;align-items:center;justify-content:space-between}.logo{color:var(--text);text-decoration:none;font-size:30px;display:flex;gap:10px;align-items:center}.logo span{font-size:21px;font-weight:700}.header-note{font-size:12px;color:var(--muted);letter-spacing:.08em}main{max-width:760px;margin:0 auto;padding:30px 24px 60px}.screen{animation:arrive .35s ease}.start{text-align:center;max-width:560px;margin:auto}.eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;color:var(--accent)}.moon-scene{height:185px;position:relative;max-width:300px;margin:auto}.moon{font-family:Georgia,serif;font-size:155px;line-height:180px;color:#f4d99e;transform:rotate(-18deg);text-shadow:0 0 55px #e8c68835}.star{position:absolute;color:#d6c5ff}.s1{left:30px;top:35px;font-size:26px}.s2{right:28px;top:23px;font-size:21px}.s3{right:55px;bottom:28px;font-size:16px}.cloud{position:absolute;left:64px;bottom:0;font-size:65px;color:#817099;opacity:.7}h1{font-size:clamp(29px,5.5vw,43px);line-height:1.45;letter-spacing:-.055em;margin:16px 0}h1 em{font-style:normal;color:var(--accent)}.intro,.result-description{color:var(--muted);font-size:15px}.chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:27px 0}.chips span,.traits span{font-size:11px;border:1px solid var(--line);padding:5px 12px;border-radius:30px;color:#c8c1dc}.primary{border:0;background:var(--accent);color:#231b39;border-radius:14px;padding:17px 24px;font-weight:700;transition:background .2s,transform .2s}.primary:hover{background:#d7c9ff;transform:translateY(-2px)}.start .primary{width:100%;max-width:390px;display:block;margin:auto}.primary span{margin-left:18px}.fine-print{font-size:11px;color:#a39bb8;line-height:1.9;margin-top:22px}.quiz{max-width:570px;margin:28px auto 0}.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}progress{appearance:none;width:100%;height:5px;border:0;border-radius:10px;overflow:hidden;margin:12px 0 35px;background:var(--line)}progress::-webkit-progress-bar{background:var(--line)}progress::-webkit-progress-value{background:var(--accent);transition:width .3s}progress::-moz-progress-bar{background:var(--accent)}.question-symbol{font-size:40px;margin-bottom:22px;color:#efd59d}.quiz h1{font-size:clamp(25px,4vw,33px);min-height:96px;outline:none}.question-help{color:var(--muted);font-size:13px;margin:0 0 30px}.answers{display:grid;gap:13px}.answer{display:flex;align-items:center;gap:15px;text-align:left;background:#26233bb3;border:1px solid #4a415f;border-radius:15px;color:var(--text);padding:22px;font-size:15px;transition:border-color .2s,background .2s}.answer:hover,.answer.selected{background:#3b3052;border-color:var(--accent)}.answer-letter{display:grid;place-items:center;border:1px solid #665875;color:#d7c7f4;flex:0 0 30px;height:30px;border-radius:50%;font-size:12px}.text-button{background:none;border:0;color:var(--muted);padding:18px 0;font-size:13px;margin-top:12px}.result{text-align:center}.result-intro{font-size:14px;color:var(--muted);margin:20px 0 0}.result-avatar{font-size:76px;display:grid;place-items:center;width:155px;height:155px;margin:18px auto;background:radial-gradient(circle,#65517b88,transparent 72%);border:1px solid #63547366;border-radius:50%}.type-badge{display:inline-block;color:#e0cfff;background:#b89bd01c;padding:3px 17px;border:1px solid #655379;border-radius:30px;font-size:13px;font-weight:700;letter-spacing:.15em}.result h1{font-size:34px;margin-top:12px;outline:none}.result-description{max-width:520px;margin:0 auto}.traits{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin:22px 0 30px}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;text-align:left}.detail-card,.reflection{background:#242237aa;border:1px solid var(--line);border-radius:20px;padding:25px}.card-label{font-size:11px;color:var(--accent);letter-spacing:.04em}.detail-card h2{font-size:18px;margin:12px 0 8px}.detail-card p{font-size:13px;color:var(--muted);margin:0}.reflection{text-align:left;margin-top:14px}.reflection label{display:block;font-size:16px;margin:10px 0 14px}textarea{display:block;resize:vertical;width:100%;border:1px solid #4a425d;border-radius:12px;background:#171625;color:var(--text);padding:14px;font:inherit;font-size:14px}.save-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px}.save-row span{font-size:11px;color:var(--muted)}.small-button{border:1px solid #6d5c86;color:#e3d3fc;background:#3b304d;border-radius:8px;padding:7px 13px;font-size:12px}.result-actions{display:flex;gap:12px;margin-top:26px}.result-actions .primary{flex:2}.secondary{flex:1;border:1px solid #665674;background:transparent;color:var(--text);border-radius:14px;padding:15px}.status{text-align:center;color:#e3d3ff;font-size:13px;min-height:24px;margin:14px 0 0}footer{border-top:1px solid #ffffff09;padding:25px;text-align:center;font-size:10px;color:#aaa1b8;letter-spacing:.12em}footer span{margin-left:18px;letter-spacing:0}@keyframes arrive{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}@media(max-width:540px){.header{padding:18px 22px}.header-note{font-size:10px}main{padding:24px 20px 35px}.moon-scene{height:160px}.moon{font-size:135px;line-height:160px}.chips{gap:6px}.chips span{padding:4px 9px}.quiz{margin-top:10px}.quiz h1{min-height:100px}.answer{padding:18px 15px;font-size:14px}.result-grid{grid-template-columns:1fr}.detail-card,.reflection{padding:20px}.result h1{font-size:29px}.result-actions{flex-direction:column}footer span{display:block;margin:5px 0 0}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.companion-stage{position:relative;max-width:330px;margin:18px auto 26px;padding:20px 16px 18px;border:1px solid #76608e55;border-radius:100px 100px 24px 24px;background:radial-gradient(ellipse at 50% 38%,#8463a745,transparent 72%),#24203680}.companion-stage .result-avatar{width:180px;height:180px;font-size:108px;margin:8px auto 12px;background:radial-gradient(circle,#a481b74d,transparent 72%);border-color:#b99ac552;filter:drop-shadow(0 12px 15px #100e2055)}.companion-star,.companion-moon{position:absolute;color:#f4d99e;font-size:27px}.companion-star{left:28px;top:70px}.companion-moon{right:27px;top:30px}.companion-greeting{font-size:12px;color:#d2c3e6;margin:0}.result-intro{color:#e3d2ff;font-size:19px;font-weight:700}
+
+</style>
+  
+</head>
+<body>
+  <header class="header"><a class="logo" href="index.html" aria-label="달잠 시작 화면">☾ <span>달잠</span></a><span class="header-note">나를 닮은 밤을 만나다</span></header>
+  <main id="app">
+    <section id="start" class="screen start">
+      <span class="eyebrow">SLEEP PERSONALITY TEST</span>
+      <div class="moon-scene" aria-hidden="true"><span class="star s1">✦</span><span class="star s2">✧</span><div class="moon">☾</div><span class="star s3">✦</span><span class="cloud">☁</span></div>
+      <h1>당신의 밤은<br><em>어떤 모습인가요?</em></h1>
+      <p class="intro">하루를 마무리하는 작은 습관 속에<br>숨어 있는 나만의 수면 친구를 찾아보세요.</p>
+      <div class="chips"><span>16개의 질문</span><span>약 3분</span><span>16가지 수면 친구</span></div>
+      <button id="start-button" class="primary">나의 수면 친구 찾기 <span>→</span></button>
+      <p class="fine-print">정답은 없어요. 평소의 나와 가까운 쪽을 골라주세요.</p>
+    </section>
+    <section id="quiz" class="screen quiz" hidden aria-labelledby="question-title">
+      <div class="progress-label"><span id="question-category"></span><span id="progress-text"></span></div>
+      <progress id="progress" max="16" value="0" aria-label="질문 진행률"></progress>
+      <div id="question-symbol" class="question-symbol" aria-hidden="true"></div>
+      <span id="question-number" class="eyebrow"></span>
+      <h1 id="question-title" tabindex="-1"></h1>
+      <p class="question-help">조금 더 나다운 쪽을 선택해 주세요.</p>
+      <div id="answers" class="answers"></div>
+      <button id="back-button" class="text-button">← 이전 질문</button>
+    </section>
+    <section id="result" class="screen result" hidden aria-labelledby="result-title">
+      <span class="eyebrow">YOUR SLEEP COMPANION</span>
+      <p class="result-intro">나의 수면 친구</p>
+      <div class="companion-stage"><span class="companion-star" aria-hidden="true">✦</span><div id="result-avatar" class="result-avatar" role="img"></div><span class="companion-moon" aria-hidden="true">☾</span><p class="companion-greeting">오늘 밤도 너의 이야기를 들려줘.</p></div>
+      <span id="result-type" class="type-badge"></span>
+      <h1 id="result-title" tabindex="-1"></h1>
+      <p id="result-description" class="result-description"></p>
+      <div id="traits" class="traits"></div>
+      <div class="result-grid"><article class="detail-card"><span class="card-label">✎ 나에게 맞는 수면일기</span><h2 id="diary-title"></h2><p id="diary-description"></p></article><article class="detail-card"><span class="card-label">✦ 오늘 밤의 작은 미션</span><h2 id="mission-title"></h2><p id="mission-description"></p></article></div>
+      <article class="reflection"><span class="card-label">오늘부터, 한 줄 수면일기</span><label id="reflection-label" for="diary-input"></label><textarea id="diary-input" rows="3" maxlength="1000" placeholder="지금 떠오르는 생각을 가볍게 남겨보세요."></textarea><div class="save-row"><span>이 브라우저에만 저장돼요.</span><button id="save-button" class="small-button">기록 저장</button></div></article>
+      <div class="result-actions"><button id="share-button" class="primary">결과 공유하기 ↗</button><button id="restart-button" class="secondary">다시 하기</button></div>
+      <p class="fine-print">이 결과는 16개 취향 질문을 바탕으로 한 재미용 콘텐츠입니다.<br>정식 MBTI 검사나 수면 건강 진단이 아니에요.</p>
+    </section>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </main>
+  <footer>☾ DALJAM <span>오늘도, 당신다운 편안한 밤.</span></footer>
+<script>
+"use strict";
+const questions = [
+  {axis:"EI",category:"밤의 에너지",symbol:"☾",title:"긴 하루가 끝난 저녁, 가장 끌리는 시간은?",a:"친한 사람과 오늘 있었던 일을 나누는 시간",b:"혼자 조용히 나만의 시간을 보내는 시간"},
+  {axis:"SN",category:"기록의 시선",symbol:"✎",title:"어젯밤의 잠을 기록한다면 무엇부터 쓸까요?",a:"잠든 시각과 깬 시각, 실제로 있었던 일",b:"꿈의 분위기와 잠에서 깼을 때 떠오른 생각"},
+  {axis:"TF",category:"마음을 돌보는 방식",symbol:"♡",title:"친구가 잠을 설쳤다고 하면 먼저 드는 생각은?",a:"어떤 이유가 있었는지 같이 살펴보고 싶다",b:"많이 피곤하겠다. 먼저 마음을 달래주고 싶다"},
+  {axis:"JP",category:"나의 밤 리듬",symbol:"✦",title:"오늘 밤을 보내는 나에게 더 편한 방식은?",a:"대략적인 취침 시각과 순서를 정해두기",b:"그날의 기분에 맞춰 자연스럽게 보내기"},
+  {axis:"EI",category:"밤의 에너지",symbol:"☁",title:"기분 좋은 일이 있었던 밤, 나는?",a:"누군가에게 바로 이야기하고 싶다",b:"혼자 떠올리며 기분을 충분히 즐기고 싶다"},
+  {axis:"SN",category:"기록의 시선",symbol:"✧",title:"꿈을 기록할 때 더 재미있는 쪽은?",a:"등장한 사람과 장소, 사건을 자세히 적기",b:"꿈이 어떤 의미일지 상상하며 적기"},
+  {axis:"TF",category:"마음을 돌보는 방식",symbol:"☽",title:"수면 친구에게 받고 싶은 반응은?",a:"기록을 정리해서 명확하게 짚어주는 말",b:"오늘의 마음을 알아주고 다정하게 건네는 말"},
+  {axis:"JP",category:"나의 밤 리듬",symbol:"⋆",title:"수면일기를 쓰는 방식으로 더 끌리는 것은?",a:"익숙한 항목을 정해진 순서로 채우기",b:"그날 쓰고 싶은 항목부터 자유롭게 남기기"},
+  {axis:"EI",category:"밤의 에너지",symbol:"☾",title:"앱에서 작은 배지를 받았다면?",a:"친구에게 보여주고 함께 즐기고 싶다",b:"내 수집함에서 혼자 뿌듯하게 감상하고 싶다"},
+  {axis:"SN",category:"기록의 시선",symbol:"✎",title:"내 수면 기록을 돌아볼 때 더 궁금한 것은?",a:"이번 주 몇 시간 잤고, 언제 잠들었는지",b:"내 밤에 어떤 흐름과 변화가 생겼는지"},
+  {axis:"TF",category:"마음을 돌보는 방식",symbol:"♡",title:"하루를 돌아보는 질문 중 더 끌리는 것은?",a:"오늘 잘된 점과 바꿔볼 점은 무엇일까?",b:"오늘 나를 웃게 하거나 위로한 것은 무엇일까?"},
+  {axis:"JP",category:"나의 밤 리듬",symbol:"✦",title:"방 꾸미기 아이템을 모을 때 나는?",a:"원하는 방을 정하고 필요한 아이템부터 모은다",b:"마음에 드는 아이템을 만나면 그때그때 모은다"},
+  {axis:"EI",category:"밤의 에너지",symbol:"☁",title:"머릿속이 복잡한 밤, 생각을 정리하는 방법은?",a:"믿는 사람과 말하다 보면 생각이 정리된다",b:"혼자 적거나 생각할 시간이 필요하다"},
+  {axis:"SN",category:"기록의 시선",symbol:"✧",title:"수면 친구의 방에서 먼저 눈에 들어오는 것은?",a:"조명 색과 침구처럼 구체적인 소품과 질감",b:"방 전체가 만들어내는 분위기와 이야기"},
+  {axis:"TF",category:"마음을 돌보는 방식",symbol:"☽",title:"작은 취침 미션을 고른다면 어떤 설명이 좋나요?",a:"무엇을 어떻게 할지 분명하게 알려주는 설명",b:"내 기분과 상황에 공감하며 권하는 설명"},
+  {axis:"JP",category:"나의 밤 리듬",symbol:"⋆",title:"잠들기 전 계획이 바뀌었을 때 나는?",a:"남은 시간을 정리하고 새 순서를 잡으면 편하다",b:"바뀐 상황에 맞춰 즉흥적으로 보내도 괜찮다"}
+];
+const companions = {
+  ISTJ:["차곡차곡 달빛지기","🦉","작은 기록을 차분하게 쌓아가는 친구예요. 익숙한 순서 속에서 나만의 편안한 밤을 발견해요."],
+  ISFJ:["포근한 이불지기","🐻","익숙한 온기와 소중한 순간을 간직하는 친구예요. 오늘 애쓴 나에게도 다정한 자리를 내어줘요."],
+  INFJ:["고요한 꿈의 안내자","🦌","하루의 마음과 숨은 의미를 천천히 살피는 친구예요. 짧은 한 문장에도 나만의 이야기를 담아요."],
+  INTJ:["별빛 설계자","🐈‍⬛","나에게 맞는 밤을 스스로 설계하는 친구예요. 기록 속 흐름을 발견하고 작은 변화를 시도해요."],
+  ISTP:["느긋한 밤 탐험가","🦝","직접 경험하며 편한 방식을 찾아가는 친구예요. 꼭 필요한 기록만 간결하게 남겨도 충분해요."],
+  ISFP:["달빛 감성 수집가","🐇","빛과 분위기, 순간의 기분을 섬세하게 느끼는 친구예요. 오늘의 밤을 나만의 색으로 남겨요."],
+  INFP:["몽글몽글 꿈 작가","🦄","마음속 이야기와 상상을 소중히 여기는 친구예요. 자유로운 한 줄이 나만의 작은 꿈집이 돼요."],
+  INTP:["호기심 많은 별 연구가","🐙","익숙한 밤에도 새로운 질문을 발견하는 친구예요. 기록을 실마리 삼아 나만의 패턴을 탐색해요."],
+  ESTP:["반짝이는 밤 모험가","🦊","지금 이 순간의 경험을 생생하게 즐기는 친구예요. 짧고 가벼운 기록부터 바로 시작해요."],
+  ESFP:["별사탕 파티 친구","🐹","즐거운 순간과 작은 성취를 함께 나누는 친구예요. 오늘의 기분을 색과 표정으로 표현해요."],
+  ENFP:["상상 가득 꿈 여행자","🦋","새로운 질문과 가능성에서 즐거움을 찾는 친구예요. 매일 다른 방식으로 밤의 이야기를 펼쳐요."],
+  ENTP:["엉뚱발랄 달 발명가","🐱","당연한 습관에도 재미있는 질문을 던지는 친구예요. 다양한 기록 방식을 바꿔가며 탐색해요."],
+  ESTJ:["든든한 밤의 선장","🦁","하루를 정리하고 다음을 준비하는 친구예요. 눈에 보이는 기록과 작은 실천에서 보람을 찾아요."],
+  ESFJ:["다정한 별빛 호스트","🐶","따뜻한 인사와 응원으로 밤을 채우는 친구예요. 나를 돌보는 시간도 소중한 약속처럼 챙겨요."],
+  ENFJ:["따뜻한 꿈 응원단장","🐬","마음의 변화와 성장을 함께 응원하는 친구예요. 오늘의 나에게 다정한 한마디를 건네봐요."],
+  ENTJ:["당당한 달빛 리더","🐯","원하는 방향을 정하고 나만의 리듬을 만드는 친구예요. 기록을 돌아보며 다음 작은 목표를 골라요."]
+};
+const $ = id => document.getElementById(id);
+let answers = [], current = 0, resultType = "";
+function showScreen(name) {
+  ["start","quiz","result"].forEach(id => $(id).hidden = id !== name);
+  $("status").textContent = "";
+  window.scrollTo({top:0,behavior:"instant"});
+}
+function renderQuestion() {
+  const q = questions[current];
+  $("question-category").textContent = q.category;
+  $("progress-text").textContent = `${current + 1} / 16 · ${Math.round(current / 16 * 100)}% 완료`;
+  $("progress").value = current;
+  $("question-number").textContent = `QUESTION ${String(current + 1).padStart(2,"0")}`;
+  $("question-symbol").textContent = q.symbol;
+  $("question-title").textContent = q.title;
+  $("answers").replaceChildren();
+  [q.a,q.b].forEach((label,index) => {
+    const button = document.createElement("button");
+    button.className = "answer" + (answers[current] === index ? " selected" : "");
+    const letter = document.createElement("span");
+    letter.className = "answer-letter"; letter.textContent = index === 0 ? "A" : "B";
+    const text = document.createElement("span"); text.textContent = label;
+    button.append(letter,text);
+    button.addEventListener("click",() => {
+      answers[current] = index;
+      if (current === 15) finish();
+      else { current++; renderQuestion(); }
+    });
+    $("answers").append(button);
+  });
+  $("back-button").disabled = current === 0;
+  $("question-title").focus();
+}
+function calculateType(values) {
+  return ["EI","SN","TF","JP"].map(axis => {
+    const indices = questions.map((q,i) => q.axis === axis ? i : -1).filter(i => i >= 0);
+    const firstCount = indices.filter(i => values[i] === 0).length;
+    // 2:2 동점은 해당 축의 첫 번째 응답을 우선합니다.
+    return firstCount === 2 ? axis[values[indices[0]]] : axis[firstCount > 2 ? 0 : 1];
+  }).join("");
+}
+function finish() { resultType = calculateType(answers); renderResult(); }
+function renderResult() {
+  const [name,avatar,description] = companions[resultType];
+  $("result-title").textContent = name; $("result-avatar").textContent = avatar;
+  $("result-avatar").setAttribute("aria-label", `나의 수면 친구 캐릭터: ${name}`);
+  $("result-type").textContent = resultType; $("result-description").textContent = description;
+  const labels = {E:"함께 나누는 밤",I:"혼자 충전하는 밤",S:"구체적인 순간",N:"상상과 이야기",T:"명료한 돌아보기",F:"다정한 돌아보기",J:"차분한 순서",P:"자유로운 흐름"};
+  $("traits").replaceChildren(...[...resultType].map(letter => { const el = document.createElement("span"); el.textContent = labels[letter]; return el; }));
+  const planned = resultType.includes("J"), feeling = resultType.includes("F"), concrete = resultType.includes("S");
+  $("diary-title").textContent = planned ? "차근차근 체크하는 일기" : "마음 가는 대로 한 줄 일기";
+  $("diary-description").textContent = (concrete ? "잠든 시각, 깬 시각, 개운함을 남겨보세요. " : "꿈의 분위기나 오늘 밤 떠오른 생각을 남겨보세요. ") + (feeling ? "마지막에는 나에게 다정한 한마디를 더해요." : "마지막에는 내일 바꿔볼 작은 점을 하나 골라요.");
+  $("mission-title").textContent = planned ? "나만의 마무리 순서 만들기" : "오늘의 밤에 이름 붙이기";
+  $("mission-description").textContent = planned ? "잠들기 전 하고 싶은 작은 일 두 가지를 적어보세요. 완벽하게 지키지 않아도 괜찮아요." : "오늘 밤을 색이나 단어 하나로 표현해 보세요. 이유는 쓰고 싶을 때만 덧붙여요.";
+  $("reflection-label").textContent = feeling ? "오늘 나에게 건네고 싶은 다정한 말은?" : "오늘 좋았던 점과 내일 시도해 볼 작은 일은?";
+  $("diary-input").value = "";
+  try { $("diary-input").value = localStorage.getItem(`daljam-diary-${resultType}`) || ""; } catch (_) { /* 저장이 제한돼도 결과는 사용 가능 */ }
+  showScreen("result"); $("result-title").focus();
+}
+$("start-button").addEventListener("click",() => { answers=[];current=0;showScreen("quiz");renderQuestion(); });
+$("back-button").addEventListener("click",() => { if(current>0){current--;renderQuestion();} });
+$("restart-button").addEventListener("click",() => { answers=[];current=0;resultType="";history.replaceState(null,"",location.pathname + location.search);showScreen("start");$("start-button").focus(); });
+$("save-button").addEventListener("click",() => {
+  try {localStorage.setItem(`daljam-diary-${resultType}`,$("diary-input").value);$("status").textContent="한 줄 일기를 저장했어요. 오늘도 수고했어요.";}
+  catch (_) {$("status").textContent="이 브라우저에서는 저장할 수 없어요. 작성한 글을 복사해 보관해 주세요.";}
+});
+$("share-button").addEventListener("click",async () => {
+  const text = `나의 달잠 수면 친구는 ${resultType} · ${companions[resultType][0]}!\n${companions[resultType][2]}`;
+  const publicUrl = /^https?:$/.test(location.protocol) ? `${location.origin}${location.pathname}${location.search}#type=${resultType}` : "";
+  try {
+    if(navigator.share){await navigator.share({title:"달잠 · 나의 수면 친구",text,...(publicUrl?{url:publicUrl}:{})});$("status").textContent="결과를 공유했어요.";return;}
+    const content = text + (publicUrl ? `\n${publicUrl}` : "");
+    if(navigator.clipboard && window.isSecureContext){await navigator.clipboard.writeText(content);}
+    else {
+      const area=document.createElement("textarea");area.value=content;area.style.position="fixed";area.style.opacity="0";document.body.append(area);area.select();const copied=document.execCommand("copy");area.remove();if(!copied)throw new Error("copy");
+    }
+    $("status").textContent="결과를 복사했어요. 원하는 곳에 붙여넣어 주세요.";
+  } catch(error) {
+    if(error.name === "AbortError")return;
+    window.prompt("아래 결과를 복사해 공유해 주세요.",text + (publicUrl?`\n${publicUrl}`:""));
+    $("status").textContent="공유할 결과를 준비했어요.";
+  }
+});
+const sharedType = new URLSearchParams(location.hash.slice(1)).get("type");
+if(sharedType && Object.hasOwn(companions,sharedType)){resultType=sharedType;renderResult();}
+
+</script>
+</body>
+</html>
+
